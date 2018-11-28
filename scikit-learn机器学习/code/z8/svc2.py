@@ -49,13 +49,14 @@ def plot_hyperplane(clf, X, y,
         plt.scatter(sv[:, 0], sv[:, 1], c='y', marker='x')
 
 
-# 生成聚类样本100个,特征数为2(默认n_features=2),类别数为2,标准差0.3,随机种子设为0
-X, y = make_blobs(n_samples=100, centers=2, random_state=0, cluster_std=0.3)
-# print(X,y)
+if __name__ == '__main__':
+    # 生成聚类样本100个,特征数为2(默认n_features=2),类别数为2,标准差0.3,随机种子设为0
+    X, y = make_blobs(n_samples=100, centers=2, random_state=0, cluster_std=0.3)
+    # print(X,y)
 
-clf = svm.SVC(kernel='linear', C=1.0)
-clf.fit(X, y)
+    clf = svm.SVC(kernel='linear', C=1.0)
+    clf.fit(X, y)
 
-plt.figure(figsize=(12, 4), dpi=144)
-plot_hyperplane(clf, X, y, h=0.01, title="最大分类超平面")
-plt.show()
+    plt.figure(figsize=(12, 4), dpi=144)
+    plot_hyperplane(clf, X, y, h=0.01, title="最大分类超平面")
+    plt.show()

@@ -6,16 +6,19 @@ from sklearn.model_selection import learning_curve
 from sklearn.model_selection import ShuffleSplit
 from matplotlib import pyplot as plt
 
-# 生成200个样本点
-n_dots = 200
-X = np.linspace(0, 1, n_dots)
-# y=sqrt(X)上下浮动0.1
-y = np.sqrt(X) + 0.2 * np.random.rand(n_dots) - 0.1
 
-# sklearn里用的矩阵shape是(样本数,特征数)和(样本数,一维预测值)
-# 这里正是200个1特征的样本,故转化为200x1的矩阵
-X = X.reshape(-1, 1)  # shape:(200, 1)
-y = y.reshape(-1, 1)  # shape:(200, 1)
+def init():
+    global n_dots, X, y
+    # 生成200个样本点
+    n_dots = 200
+    X = np.linspace(0, 1, n_dots)
+    # y=sqrt(X)上下浮动0.1
+    y = np.sqrt(X) + 0.2 * np.random.rand(n_dots) - 0.1
+
+    # sklearn里用的矩阵shape是(样本数,特征数)和(样本数,一维预测值)
+    # 这里正是200个1特征的样本,故转化为200x1的矩阵
+    X = X.reshape(-1, 1)  # shape:(200, 1)
+    y = y.reshape(-1, 1)  # shape:(200, 1)
 
 
 # 多项式模型,传入多项式的次数
@@ -74,6 +77,7 @@ def plot_learning_curve(estimator, title, X, y, ylim=None, cv=None, n_jobs=1, tr
 
 
 if __name__ == '__main__':
+    init()
     # <class 'sklearn.model_selection._split.ShuffleSplit'>
     # 该对象用于将样本集合随机打乱后划分为训练集/测试集
     # n_splits=划分次数,test_size=测试集占比,train_size=训练集占比(默认None即取余下全部)
