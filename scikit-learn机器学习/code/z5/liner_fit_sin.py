@@ -16,7 +16,6 @@ y = np.sin(X) + 0.2 * np.random.randn(n_dots) - 0.1
 X = X.reshape(-1, 1)
 y = y.reshape(-1, 1)
 
-
 # 多项式回归模型
 def polynomial_model(degree=1):
     # 多项式模型,指定多项式的次数和是否使用偏置(常数项)

@@ -19,6 +19,7 @@ def init():
     cancer = load_breast_cancer()
     X = cancer.data
     y = cancer.target
+    # print(y.shape)
     print("shape:{},阳性样本数:{},阴性样本数{}".format(X.shape, y[y == 1].shape[0], y[y == 0].shape[0]))
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
@@ -31,6 +32,8 @@ if __name__ == '__main__':
     train_score = clf.score(X_train, y_train)
     test_score = clf.score(X_test, y_test)
     print("train score:{},test score:{}".format(train_score, test_score))
+
+    '''下面的(特别是二阶多项式)很耗CPU!'''
 
     # 获取gamma参数在一个范围集合中的最优值
     gammas = np.linspace(0, 0.0003, 30)
